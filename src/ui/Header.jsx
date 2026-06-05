@@ -1,22 +1,20 @@
-import { Link } from "react-router";
-import { Coffee, UserCircle2 } from "lucide-react";
+import { BellRing, User2 } from "lucide-react";
 import Logo from "../pages/Logo";
-import PullShotButton from "./PullShotButton";
-
-// Could have some "Whats new" icon
-// Updates can be implemented this way so users can see the updates only if they
-// want to
+import IconButton from "./IconButton";
+import LinkButton from "./LinkButton";
 
 const Header = () => {
   return (
-    <header className="fixed z-99 h-16 w-full bg-neutral-900 p-2 text-neutral-300 sm:static sm:h-14 sm:rounded-2xl sm:px-4">
+    <header className="fixed z-99 h-16 w-full bg-neutral-950 p-2 text-neutral-300 sm:static sm:h-14 sm:px-4">
       <div className="flex h-full items-center justify-between">
         <Logo />
-        <div className="flex items-center gap-2 sm:hidden">
-          <button className="rounded-2xl border-2 px-2">What's new?</button>
-          <Link to="settings" className="">
-            <UserCircle2 size={24} />
-          </Link>
+        <div className="flex items-center gap-2">
+          <IconButton aria-label="Notifications">
+            <BellRing />
+          </IconButton>
+          <LinkButton aria-label="Settings">
+            <User2 />
+          </LinkButton>
         </div>
       </div>
     </header>

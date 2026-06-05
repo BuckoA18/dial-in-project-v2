@@ -5,7 +5,7 @@ import { coffeeBean } from "@lucide/lab";
 
 const BottomNav = () => {
   return (
-    <nav className="fixed bottom-0 left-0 flex h-16 w-full justify-center rounded-t-2xl bg-neutral-900 sm:hidden">
+    <nav className="fixed bottom-0 left-0 flex h-16 w-full justify-center rounded-t-2xl bg-neutral-950 sm:hidden">
       {/* Left part */}
       <div className="mr-8 flex min-w-32.5 grow justify-around">
         <NavItem to="/">

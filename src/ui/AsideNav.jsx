@@ -1,24 +1,33 @@
-import { NavLink } from "react-router";
+import { Home, Icon, Settings } from "lucide-react";
+import NavItem, { NavItemIcon } from "./NavItem";
+import { coffeeBean, planet } from "@lucide/lab";
 
 const AsideNav = () => {
   return (
-    <nav className="mt-18 flex flex-col gap-2 text-neutral-200">
-      <NavLink
-        to="/"
-        className={({ isActive }) =>
-          `md:hover-bg-neutral-900 w-34 rounded-r-2xl p-2 text-lg font-semibold hover:bg-neutral-800 ${isActive ? "bg-neutral-800" : "bg-neutral-900"}`
-        }
-      >
-        Home
-      </NavLink>
-      <NavLink
-        to="settings"
-        className={({ isActive }) =>
-          `w-34 rounded-r-2xl p-2 text-lg font-semibold hover:bg-neutral-800 ${isActive ? "bg-neutral-800" : "bg-neutral-900"}`
-        }
-      >
-        settings
-      </NavLink>
+    <nav className="flex w-full flex-col justify-center gap-2 text-neutral-200">
+      <NavItem to="/">
+        <NavItemIcon>
+          <Home />
+        </NavItemIcon>
+      </NavItem>
+
+      <NavItem to="beans">
+        <NavItemIcon>
+          <Icon iconNode={coffeeBean} />
+        </NavItemIcon>
+      </NavItem>
+
+      <NavItem to="whateer">
+        <NavItemIcon>
+          <Icon iconNode={planet} />
+        </NavItemIcon>
+      </NavItem>
+
+      <NavItem to="settings" className="mt-auto">
+        <NavItemIcon>
+          <Settings />
+        </NavItemIcon>
+      </NavItem>
     </nav>
   );
 };

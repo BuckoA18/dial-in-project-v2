@@ -5,9 +5,9 @@ import BottomNav from "./BottomNav";
 
 const AppLayout = () => {
   return (
-    <div className="flex h-dvh w-full flex-col gap-2 bg-neutral-900 sm:p-2 md:gap-4 md:p-4">
+    <div className="flex h-dvh w-full flex-col gap-2 bg-neutral-950 sm:p-2 md:gap-4 md:p-2">
       <Header />
-      <div className="relative mt-16 flex gap-2 sm:mt-0 md:gap-4">
+      <div className="relative mt-16 flex h-full gap-2 sm:mt-0">
         <Aside />
         <Outlet />
         <BottomNav />
