@@ -1,9 +1,24 @@
+import Header from "../ui/Header";
+import OnTheGrinderCard from "../ui/OnTheGrinderCard";
+import Section from "../ui/Section";
+import SectionTitle from "../ui/SectionTitle";
 const Dashboard = () => {
   return (
-    <main className="flex h-dvh w-full rounded-t-2xl bg-neutral-900 p-2 text-neutral-200 sm:h-full sm:rounded-2xl">
-      <section>
-        <h2 className="text-lg font-semibold">Hi, John</h2>
-      </section>
+    <main className="flex h-dvh w-full flex-col bg-neutral-950 text-neutral-200 sm:h-full sm:rounded-2xl">
+      {/* Custom header for mobile only */}
+      <Header className="sm:hidden" />
+
+      {/* On the grinder section */}
+      <Section>
+        <SectionTitle>On the grinder</SectionTitle>
+        <OnTheGrinderCard />
+      </Section>
+
+      {/* Recent shots section */}
+      <Section>
+        <SectionTitle>Recent shots</SectionTitle>
+        <ul>list of recent shot, filter methods?</ul>
+      </Section>
     </main>
   );
 };

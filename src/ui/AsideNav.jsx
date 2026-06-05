@@ -1,5 +1,5 @@
 import { Home, Icon, Settings } from "lucide-react";
-import NavItem, { NavItemIcon } from "./NavItem";
+import NavItem, { NavItemIcon, NavItemText } from "./NavItem";
 import { coffeeBean, planet } from "@lucide/lab";
 
 const AsideNav = () => {
@@ -9,24 +9,28 @@ const AsideNav = () => {
         <NavItemIcon>
           <Home />
         </NavItemIcon>
+        <NavItemText>Home</NavItemText>
       </NavItem>
 
       <NavItem to="beans">
         <NavItemIcon>
           <Icon iconNode={coffeeBean} />
         </NavItemIcon>
+        <NavItemText>Beans</NavItemText>
       </NavItem>
 
       <NavItem to="whateer">
         <NavItemIcon>
           <Icon iconNode={planet} />
         </NavItemIcon>
+        <NavItemText>Planet!</NavItemText>
       </NavItem>
 
-      <NavItem to="settings" className="mt-auto">
+      <NavItem to="settings" className="sm:mt-auto lg:mt-0">
         <NavItemIcon>
           <Settings />
         </NavItemIcon>
+        <NavItemText>Settings</NavItemText>
       </NavItem>
     </nav>
   );

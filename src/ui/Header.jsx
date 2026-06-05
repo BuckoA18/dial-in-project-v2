@@ -1,11 +1,13 @@
 import { BellRing, User2 } from "lucide-react";
-import Logo from "../pages/Logo";
+import Logo from "./Logo";
 import IconButton from "./IconButton";
 import LinkButton from "./LinkButton";
 
-const Header = () => {
+const Header = ({ className = "" }) => {
   return (
-    <header className="fixed z-99 h-16 w-full bg-neutral-950 p-2 text-neutral-300 sm:static sm:h-14 sm:px-4">
+    <header
+      className={`p-2 sm:block sm:h-14 sm:w-full sm:bg-neutral-950 sm:px-4 sm:text-neutral-300 ${className}`}
+    >
       <div className="flex h-full items-center justify-between">
         <Logo />
         <div className="flex items-center gap-2">
