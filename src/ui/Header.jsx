@@ -18,10 +18,6 @@ const Header = () => {
             <UserCircle2 size={24} />
           </Link>
         </div>
-        <PullShotButton className="hidden sm:flex">
-          <p>Pull shot</p>
-          <Coffee />
-        </PullShotButton>
       </div>
     </header>
   );
