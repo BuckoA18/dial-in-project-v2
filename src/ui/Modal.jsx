@@ -8,7 +8,7 @@ const Modal = ({ onCloseModal, children }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="z-99 min-h-120 w-full rounded-2xl bg-neutral-950 p-2"
+        className="z-99 min-h-120 w-full max-w-160 rounded-2xl bg-neutral-950 p-2 sm:p-4 lg:max-w-280"
       >
         {children}
       </div>

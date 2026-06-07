@@ -6,7 +6,10 @@ const Dashboard = () => {
   return (
     <main className="flex h-dvh w-full flex-col bg-neutral-950 text-neutral-200 sm:h-full sm:rounded-2xl">
       {/* Custom header for mobile only */}
-      <Header className="sm:hidden" />
+      <Header className="sm:hidden">
+        <Header.Logo />
+        <Header.Actions />
+      </Header>
 
       {/* On the grinder section */}
       <Section>
