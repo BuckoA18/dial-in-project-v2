@@ -5,5 +5,4 @@ const Badge = ({ label }) => {
     </span>
   );
 };
-
 export default Badge;
