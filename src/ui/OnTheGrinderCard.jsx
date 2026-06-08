@@ -86,7 +86,7 @@ OnTheGrinderCard.Stats = ({ stats }) => {
   return (
     <div className="flex justify-center gap-2">
       {stats?.map((stat) => (
-        <StatCard label={stat.label} value={stat.value} key={stat.key} />
+        <StatCard label={stat.label} value={stat.value} key={stat.id} />
       ))}
     </div>
   );

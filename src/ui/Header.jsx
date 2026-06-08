@@ -1,7 +1,6 @@
 import { ArrowLeft, BellRing, Settings } from "lucide-react";
 import IconButton from "./IconButton";
 import LinkButton from "./LinkButton";
-import { useNavigate } from "react-router";
 
 const Header = ({ className = "", children }) => {
   return (
@@ -15,7 +14,7 @@ const Header = ({ className = "", children }) => {
 export default Header;
 
 Header.Logo = () => {
-  return <h2 className="text-2xl font-bold">SICK ASS LOGO</h2>;
+  return <h1 className="text-2xl font-bold">SICK ASS LOGO</h1>;
 };
 
 Header.Actions = () => {

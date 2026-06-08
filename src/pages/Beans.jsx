@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router";
+import { useGetBeans } from "../features/beans/hooks/useGetBeans";
 import Header from "../ui/Header";
-import BeansList from "../ui/BeansList";
+import BeansList from "../features/beans/components/BeansList";
+import BeansItem from "../features/beans/components/BeansItem";
 
 const Beans = () => {
   const navigate = useNavigate();
+  const { data: beans, error, isPending } = useGetBeans();
+
   return (
     <main className="grow rounded-t-2xl bg-neutral-950 p-2">
       <Header className="sm:hidden">
@@ -11,17 +15,16 @@ const Beans = () => {
       </Header>
 
       {/* List of added beans, first option being create new? */}
-      <BeansList>
-
+      <BeansList isPending={isPending}>
+        <button className="rounded-2xl border-2 border-neutral-200 p-2 text-neutral-200">
+          Add Bean
+        </button>
+        {beans?.map((bean) => (
+          <BeansItem key={bean.id} bean={bean} />
+        ))}
       </BeansList>
     </main>
   );
 };
 
 export default Beans;
-
-{
-  id: 1,
-  name: "Bean name",
-  roastery: "dsdsd"
-}
