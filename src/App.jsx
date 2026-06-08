@@ -3,6 +3,7 @@ import AppLayout from "./ui/AppLayout";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Beans from "./pages/Beans";
+import NewBean from "./pages/NewBean";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
@@ -17,6 +18,7 @@ const App = () => {
           <Route element={<AppLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="beans" element={<Beans />} />
+            <Route path="beans/new" element={<NewBean />} />
           </Route>
           <Route path="settings" element={<Settings />} />
         </Routes>

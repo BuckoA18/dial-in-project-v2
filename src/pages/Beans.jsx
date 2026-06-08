@@ -3,6 +3,7 @@ import { useGetBeans } from "../features/beans/hooks/useGetBeans";
 import Header from "../ui/Header";
 import BeansList from "../features/beans/components/BeansList";
 import BeansItem from "../features/beans/components/BeansItem";
+import LinkButton from "../ui/LinkButton";
 
 const Beans = () => {
   const navigate = useNavigate();
@@ -16,9 +17,12 @@ const Beans = () => {
 
       {/* List of added beans, first option being create new? */}
       <BeansList isPending={isPending}>
-        <button className="rounded-2xl border-2 border-neutral-200 p-2 text-neutral-200">
+        <LinkButton
+          to="new"
+          className="rounded-2xl border-2 border-neutral-200 p-2 text-neutral-200"
+        >
           Add Bean
-        </button>
+        </LinkButton>
         {beans?.map((bean) => (
           <BeansItem key={bean.id} bean={bean} />
         ))}
