@@ -30,3 +30,9 @@ export const flavours = [
   { id: 29, label: "Raisin" },
   { id: 30, label: "Stone Fruit" },
 ];
+
+export const VALIDATION_RULES = [
+  {
+    
+  }
+]
