@@ -1,13 +1,10 @@
 import { useState } from "react";
+import { flavours } from "../../../config";
 import FlavourBadge from "../../../ui/FlavourBadge";
 import Modal from "../../../ui/Modal";
 import Button from "../../../ui/Button";
 
-const BeanFlavoursInput = ({
-  flavours,
-  selectedFlavours,
-  onToggleFlavours,
-}) => {
+const BeanFlavoursInput = ({ selectedFlavours, onToggleFlavours }) => {
   const [isFlavoursOpen, setIsFlavoursOpen] = useState(false);
 
   const handleToggleFlavours = (e) => {
@@ -32,15 +29,13 @@ const BeanFlavoursInput = ({
           <Modal.Body>
             <div className="flex flex-wrap gap-1 sm:gap-2">
               {flavours?.map((flavour) => {
-                console.log(flavour.id);
-                console.log(selectedFlavours);
-                const isActive = selectedFlavours.includes(flavour.id);
+                const isActive = selectedFlavours?.includes(flavour);
                 return (
                   <FlavourBadge
                     label={flavour.label}
                     key={flavour.id}
                     isActive={isActive}
-                    onClick={() => onToggleFlavours(flavour.id)}
+                    onClick={() => onToggleFlavours(flavour)}
                   />
                 );
               })}

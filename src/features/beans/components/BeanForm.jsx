@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { flavours } from "../../../config";
 import Input from "../../../ui/Input";
 import InputWrapper from "../../../ui/InputWrapper";
 import Label from "../../../ui/Label";
@@ -7,7 +6,6 @@ import Button from "../../../ui/Button";
 import BeanFlavoursInput from "./BeanFlavoursInput";
 
 const BeanForm = () => {
-  const [selectedFlavours, setSelectedFlavours] = useState([]);
   const [beanData, setBeanData] = useState({
     name: "",
     roastery: "",
@@ -16,16 +14,18 @@ const BeanForm = () => {
     flavours: [],
   });
 
-  const handleToggleSelectFlavour = (id) => {
-    console.log(beanData.flavours.includes(id));
-
-    setBeanData((prev) =>
-      prev.flavours.includes(id)
-        ? prev.flavours.filter((selectedId) => selectedId !== id)
-        : { ...prev, flavours: [...prev.flavours, id] },
-    );
-    console.log(beanData);
+  const handleToggleSelectFlavour = (flavour) => {
+    setBeanData((prev) => {
+      return {
+        ...prev,
+        flavours: prev.flavours.includes(flavour)
+          ? prev.flavours.filter((f) => f !== flavour)
+          : [...prev.flavours, flavour],
+      };
+    });
   };
+
+  console.log(beanData);
 
   const updateBeanData = (key, value) => {
     setBeanData((prev) => ({ ...prev, key: value }));
@@ -38,8 +38,7 @@ const BeanForm = () => {
       <RoastDateField />
       <RoastLevelField />
       <BeanFlavoursInput
-        flavours={flavours}
-        selectedFlavours={beanData.flavours}
+        selectedFlavours={beanData?.flavours}
         onToggleFlavours={handleToggleSelectFlavour}
       />
 
