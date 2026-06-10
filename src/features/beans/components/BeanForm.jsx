@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { getCurrentDate, getIsDateInFuture } from "../../../utils";
 import Input from "../../../ui/Input";
 import InputWrapper from "../../../ui/InputWrapper";
 import Label from "../../../ui/Label";
 import Button from "../../../ui/Button";
 import BeanFlavoursInput from "./BeanFlavoursInput";
-import { getCurrentDate } from "../../../utils";
 
 const BeanForm = () => {
   const [beanData, setBeanData] = useState({
@@ -29,9 +29,6 @@ const BeanForm = () => {
   const updateBeanData = (key, value) => {
     setBeanData((prev) => ({ ...prev, [key]: value }));
   };
-
-  const now = Temporal.Now.plainDateTimeISO();
-  console.log(now.toString());
 
   console.log(beanData);
   return (
@@ -102,7 +99,10 @@ const RoastDateField = ({ value, updateBeanData }) => {
         id="roasted-at"
         type="date"
         value={value}
-        onChange={(e) => updateBeanData("roastedAt", e.target.value)}
+        onChange={(e) => {
+          if (getIsDateInFuture(e.target.value)) return;
+          updateBeanData("roastedAt", e.target.value);
+        }}
       />
     </InputWrapper>
   );
