@@ -11,7 +11,7 @@ export const usePostBean = () => {
   return useMutation({
     mutationFn: async (beanData) => {
       const { data, error } = await supabase
-        .from("beanss")
+        .from("beans")
         .insert(beanData)
         .select();
 

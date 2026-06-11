@@ -32,7 +32,10 @@ const BeanForm = () => {
   };
 
   return (
-    <form className="flex h-full flex-col gap-2 p-2" onSubmit={handleSubmit}>
+    <form
+      className="flex grow flex-col gap-2 rounded-2xl pb-20 sm:bg-neutral-900 sm:p-4"
+      onSubmit={handleSubmit}
+    >
       <BeanNameField
         value={beanData.name}
         updateBeanData={handleUpdateBeanData}
@@ -51,7 +54,9 @@ const BeanForm = () => {
       />
       <BeanFlavoursInput selectedFlavours={beanData.flavours} />
 
-      <Button className="mt-auto">Save</Button>
+      <span className="fixed right-0 bottom-2 w-full px-1 sm:static">
+        <Button className="">Save</Button>
+      </span>
 
       {isPending && <Loader />}
     </form>
@@ -115,7 +120,7 @@ const RoastLevelField = ({ value, updateBeanData }) => {
       <select
         required
         id="roast-level"
-        className="rounded-2xl border-2 border-neutral-400 p-2"
+        className="appearance-none rounded-2xl border-neutral-400 p-2 focus:outline-none"
         value={value}
         onChange={(e) => updateBeanData("roastLevel", e.target.value)}
       >

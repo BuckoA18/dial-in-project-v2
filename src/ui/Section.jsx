@@ -1,5 +1,5 @@
 const Section = ({ children }) => {
-  return <section className="p-2">{children}</section>;
+  return <section className="">{children}</section>;
 };
 
 Section.Title = ({ children }) => {

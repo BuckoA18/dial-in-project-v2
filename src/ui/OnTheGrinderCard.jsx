@@ -49,7 +49,7 @@ const OnTheGrinderCard = () => {
     setIsCardOpen((prev) => !prev);
   };
   return (
-    <div className="flex w-full flex-col gap-4 rounded-2xl bg-neutral-900 p-2">
+    <div className="flex w-full flex-col gap-4 rounded-2xl bg-neutral-900 bg-linear-to-b p-2">
       <OnTheGrinderCard.Header
         onToggle={handleToggleCard}
         isCardOpen={isCardOpen}

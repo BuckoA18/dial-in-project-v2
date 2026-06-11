@@ -1,7 +1,7 @@
 const Input = ({ className = "", ...props }) => {
   return (
     <input
-      className={`rounded-2xl border-2 border-neutral-400 p-2 sm:grow ${className}`}
+      className={`border-b-4 border-dashed p-2 text-lg font-semibold focus:border-solid focus:outline-none ${className} transition-all`}
       {...props}
     />
   );

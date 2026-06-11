@@ -5,14 +5,16 @@ import Header from "../ui/Header";
 const NewBean = () => {
   const navigate = useNavigate();
   return (
-    <main className="flex h-full w-full flex-col gap-2 text-neutral-200">
+    <div className="flex h-full w-full max-w-4xl flex-col gap-2 text-neutral-200 lg:mx-auto">
       <Header>
         <Header.PageTitle>New Bean</Header.PageTitle>
         <Header.BackButton onNavigate={() => navigate(-1)} />
       </Header>
-      {/* Form  for adding new beans */}
-      <BeanForm />
-    </main>
+
+      <main className="h-full p-2">
+        <BeanForm />
+      </main>
+    </div>
   );
 };
 
