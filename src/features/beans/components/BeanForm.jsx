@@ -1,60 +1,66 @@
-import { useState } from "react";
-import { getCurrentDate, getIsDateInFuture } from "../../../utils";
+import { getIsDateInFuture } from "../../../utils";
+import { usePostBean } from "../hooks/usePostBean";
+import { useDispatch, useSelector } from "react-redux";
+
+import { updateBeanData } from "../beansSlice";
 import Input from "../../../ui/Input";
 import InputWrapper from "../../../ui/InputWrapper";
 import Label from "../../../ui/Label";
 import Button from "../../../ui/Button";
 import BeanFlavoursInput from "./BeanFlavoursInput";
+import Loader from "../../../ui/Loader";
 
 const BeanForm = () => {
-  const [beanData, setBeanData] = useState({
-    name: "",
-    roastery: "",
-    roastedAt: getCurrentDate(),
-    roastLevel: "medium",
-    flavours: [],
-  });
+  const dispatch = useDispatch();
+  const { isPending, isError, mutate, error } = usePostBean();
+  const { beanData } = useSelector((state) => state.beans);
 
-  const handleToggleSelectFlavour = (flavour) => {
-    setBeanData((prev) => {
-      return {
-        ...prev,
-        flavours: prev.flavours.includes(flavour)
-          ? prev.flavours.filter((f) => f !== flavour)
-          : [...prev.flavours, flavour],
-      };
-    });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const dataToSubmit = {
+      name: beanData.name,
+      roasted_at: beanData.roastedAt,
+      roasted_by: beanData.roastery,
+      roast_level: beanData.roastLevel,
+      flavours: beanData.flavours,
+    };
+
+    mutate(dataToSubmit);
   };
 
-  const updateBeanData = (key, value) => {
-    setBeanData((prev) => ({ ...prev, [key]: value }));
+  const handleUpdateBeanData = (key, value) => {
+    dispatch(updateBeanData({ key: key, value: value }));
   };
 
-  console.log(beanData);
   return (
-    <form className="flex flex-col gap-2">
-      <BeanNameField value={beanData.name} updateBeanData={updateBeanData} />
-      <RoasteryField
-        value={beanData.roastery}
-        updateBeanData={updateBeanData}
-      />
-      <RoastDateField
-        value={beanData.roastedAt}
-        updateBeanData={updateBeanData}
-      />
-      <RoastLevelField
-        value={beanData.roastLevel}
-        updateBeanData={updateBeanData}
-      />
-      <BeanFlavoursInput
-        selectedFlavours={beanData?.flavours}
-        onToggleFlavours={handleToggleSelectFlavour}
-      />
+    <>
+      {isPending && <Loader />}
+      <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+        <BeanNameField
+          value={beanData.name}
+          updateBeanData={handleUpdateBeanData}
+        />
+        <RoasteryField
+          value={beanData.roastery}
+          updateBeanData={handleUpdateBeanData}
+        />
+        <RoastDateField
+          value={beanData.roastedAt}
+          updateBeanData={handleUpdateBeanData}
+        />
+        <RoastLevelField
+          value={beanData.roastLevel}
+          updateBeanData={handleUpdateBeanData}
+        />
+        <BeanFlavoursInput selectedFlavours={beanData.flavours} />
 
-      <div className="fixed right-0 bottom-2 w-full px-2">
-        <Button>Save</Button>
-      </div>
-    </form>
+        {isError && <p className="text-red-300">{error.message}</p>}
+
+        <div className="fixed right-0 bottom-2 w-full px-2">
+          <Button>Save</Button>
+        </div>
+      </form>
+    </>
   );
 };
 

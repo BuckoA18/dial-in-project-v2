@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { flavours } from "../../../config";
+import { useDispatch } from "react-redux";
+import { addFlavour, deleteFlavour } from "../beansSlice";
 import FlavourBadge from "../../../ui/FlavourBadge";
 import Modal from "../../../ui/Modal";
 import Button from "../../../ui/Button";
 
-const BeanFlavoursInput = ({ selectedFlavours, onToggleFlavours }) => {
+const BeanFlavoursInput = ({ selectedFlavours }) => {
+  const dispatch = useDispatch();
   const [isFlavoursOpen, setIsFlavoursOpen] = useState(false);
 
   const handleToggleFlavours = (e) => {
@@ -14,12 +17,28 @@ const BeanFlavoursInput = ({ selectedFlavours, onToggleFlavours }) => {
 
   return (
     <div>
-      <button
-        onClick={handleToggleFlavours}
-        className="mt-2 text-left font-semibold text-orange-400"
-      >
-        Add flavours
-      </button>
+      <span className="my-2 flex justify-between">
+        <p>Flavours</p>
+        <button
+          className="mb-4"
+          onClick={handleToggleFlavours}
+          className="font-semibold text-orange-400"
+        >
+          Add flavours
+        </button>
+      </span>
+      <div className="flex flex-wrap gap-1 sm:gap-2">
+        {selectedFlavours?.length > 0 &&
+          selectedFlavours.map((flavour) => {
+            return (
+              <FlavourBadge
+                label={flavour.label}
+                key={flavour.id}
+                className=""
+              />
+            );
+          })}
+      </div>
       {isFlavoursOpen && (
         <Modal onToggle={handleToggleFlavours}>
           <Modal.Header onToggle={handleToggleFlavours}>
@@ -35,7 +54,12 @@ const BeanFlavoursInput = ({ selectedFlavours, onToggleFlavours }) => {
                     label={flavour.label}
                     key={flavour.id}
                     isActive={isActive}
-                    onClick={() => onToggleFlavours(flavour)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(
+                        isActive ? deleteFlavour(flavour) : addFlavour(flavour),
+                      );
+                    }}
                   />
                 );
               })}
@@ -43,7 +67,9 @@ const BeanFlavoursInput = ({ selectedFlavours, onToggleFlavours }) => {
           </Modal.Body>
 
           <Modal.Actions>
-            <Button className="bg-green-500">Save</Button>
+            <Button className="" onClick={handleToggleFlavours}>
+              Save flavours
+            </Button>
           </Modal.Actions>
         </Modal>
       )}
