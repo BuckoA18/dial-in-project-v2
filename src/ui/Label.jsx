@@ -1,6 +1,9 @@
 const Label = ({ className = "", children, ...props }) => {
   return (
-    <label className={`${className}`} {...props}>
+    <label
+      className={`sm:flex sm:max-w-20 sm:grow sm:items-center sm:justify-end sm:text-right ${className}`}
+      {...props}
+    >
       {children}
     </label>
   );

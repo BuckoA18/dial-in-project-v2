@@ -7,14 +7,14 @@ import LinkButton from "../ui/LinkButton";
 
 const Beans = () => {
   const navigate = useNavigate();
-  const { data: beans, error, isPending } = useGetBeans();
+  const { data: beans, isPending } = useGetBeans();
 
   return (
-    <main className="grow rounded-t-2xl bg-neutral-950 p-2">
-      <Header className="sm:hidden">
-        <Header.BackButton onClick={() => navigate(-1)} />
+    <main className="grow bg-neutral-950 text-neutral-200">
+      <Header>
+        <Header.PageTitle>Beans</Header.PageTitle>
+        <Header.BackButton onNavigate={() => navigate(-1)} />
       </Header>
-
       {/* List of added beans, first option being create new? */}
       <BeansList isPending={isPending}>
         <LinkButton

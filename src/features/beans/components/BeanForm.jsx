@@ -1,7 +1,6 @@
 import { getIsDateInFuture } from "../../../utils";
 import { usePostBean } from "../hooks/usePostBean";
 import { useDispatch, useSelector } from "react-redux";
-
 import { updateBeanData } from "../beansSlice";
 import Input from "../../../ui/Input";
 import InputWrapper from "../../../ui/InputWrapper";
@@ -12,7 +11,7 @@ import Loader from "../../../ui/Loader";
 
 const BeanForm = () => {
   const dispatch = useDispatch();
-  const { isPending, isError, mutate, error } = usePostBean();
+  const { isPending, mutate } = usePostBean();
   const { beanData } = useSelector((state) => state.beans);
 
   const handleSubmit = (e) => {
@@ -33,34 +32,29 @@ const BeanForm = () => {
   };
 
   return (
-    <>
+    <form className="flex h-full flex-col gap-2 p-2" onSubmit={handleSubmit}>
+      <BeanNameField
+        value={beanData.name}
+        updateBeanData={handleUpdateBeanData}
+      />
+      <RoasteryField
+        value={beanData.roastery}
+        updateBeanData={handleUpdateBeanData}
+      />
+      <RoastDateField
+        value={beanData.roastedAt}
+        updateBeanData={handleUpdateBeanData}
+      />
+      <RoastLevelField
+        value={beanData.roastLevel}
+        updateBeanData={handleUpdateBeanData}
+      />
+      <BeanFlavoursInput selectedFlavours={beanData.flavours} />
+
+      <Button className="mt-auto">Save</Button>
+
       {isPending && <Loader />}
-      <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-        <BeanNameField
-          value={beanData.name}
-          updateBeanData={handleUpdateBeanData}
-        />
-        <RoasteryField
-          value={beanData.roastery}
-          updateBeanData={handleUpdateBeanData}
-        />
-        <RoastDateField
-          value={beanData.roastedAt}
-          updateBeanData={handleUpdateBeanData}
-        />
-        <RoastLevelField
-          value={beanData.roastLevel}
-          updateBeanData={handleUpdateBeanData}
-        />
-        <BeanFlavoursInput selectedFlavours={beanData.flavours} />
-
-        {isError && <p className="text-red-300">{error.message}</p>}
-
-        <div className="fixed right-0 bottom-2 w-full px-2">
-          <Button>Save</Button>
-        </div>
-      </form>
-    </>
+    </form>
   );
 };
 

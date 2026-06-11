@@ -3,6 +3,7 @@ import { supabase } from "../../../../supabase";
 import { resetBeanData } from "../beansSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 export const usePostBean = () => {
   const dispatch = useDispatch();
@@ -10,20 +11,24 @@ export const usePostBean = () => {
   return useMutation({
     mutationFn: async (beanData) => {
       const { data, error } = await supabase
-        .from("beans")
+        .from("beanss")
         .insert(beanData)
         .select();
 
-      if (error) throw new Error(error.message);
+      if (error)
+        throw new Error(`Error in uploading ${beanData.name}. Try again later`);
 
       return data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      console.log(data);
       dispatch(resetBeanData());
       navigate("/beans");
+      toast.success(`${data[0].name} succesfully added!`);
     },
     onError: (error) => {
-      console.log("Caught in onError: ", error);
+      console.error(error);
+      toast.error(error.message);
     },
   });
 };

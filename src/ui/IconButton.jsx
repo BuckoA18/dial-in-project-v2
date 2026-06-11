@@ -1,4 +1,4 @@
-const IconButton = ({ children, onClick, className = "", props }) => {
+const IconButton = ({ children, onClick, className = "", ...props }) => {
   return (
     <button
       onClick={onClick}
