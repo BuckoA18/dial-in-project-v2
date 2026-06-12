@@ -29,6 +29,7 @@ const beansSlice = createSlice({
       };
     },
     addFlavour: (state, action) => {
+      console.log("payload: ", action.payload);
       state.beanData.flavours.push(action.payload);
     },
     deleteFlavour: (state, action) => {

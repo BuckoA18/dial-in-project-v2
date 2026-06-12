@@ -1,10 +1,10 @@
 import { X } from "lucide-react";
 import IconButton from "./IconButton";
 
-const Modal = ({ onToggle, children }) => {
+const Modal = ({ onClose, children }) => {
   return (
     <div
-      onClick={onToggle}
+      onClick={onClose}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm transition-opacity"
     >
       <div
@@ -17,12 +17,12 @@ const Modal = ({ onToggle, children }) => {
   );
 };
 
-Modal.Header = ({ children, onToggle }) => {
+Modal.Header = ({ children, onClose }) => {
   return (
     <div className="relative mb-4 flex items-center justify-center">
       <IconButton
         className="absolute top-0 right-0 text-neutral-200"
-        onClick={onToggle}
+        onClick={onClose}
       >
         <X />
       </IconButton>

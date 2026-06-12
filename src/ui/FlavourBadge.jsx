@@ -1,11 +1,26 @@
-const FlavourBadge = ({ label, isActive, onClick }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { addFlavour, deleteFlavour } from "../features/beans/beansSlice";
+
+const FlavourBadge = ({ flavour }) => {
+  const { flavours } = useSelector((state) => state.beans.beanData);
+  const dispatch = useDispatch();
+
+  const isSelected = flavours.includes(flavour);
+
   return (
-    <span
-      onClick={onClick}
-      className={`rounded-full border-2 px-2 py-1 text-sm font-semibold transition-colors ${isActive && "border-orange-600 bg-orange-600"}`}
+    <label
+      className={`text-md rounded-full border-2 px-2 py-1 font-semibold text-neutral-200 transition-colors focus-within:outline-none has-checked:border-orange-600 focus-within:has-focus-visible:ring-4 focus-within:has-focus-visible:ring-orange-600`}
     >
-      {label}
-    </span>
+      <input
+        type="checkbox"
+        className="sr-only"
+        checked={isSelected}
+        onChange={() =>
+          dispatch(isSelected ? deleteFlavour(flavour) : addFlavour(flavour))
+        }
+      />
+      {flavour.label}
+    </label>
   );
 };
 
