@@ -8,6 +8,7 @@ import Label from "../../../ui/Label";
 import Button from "../../../ui/Button";
 import BeanFlavoursInput from "./BeanFlavoursInput";
 import Loader from "../../../ui/Loader";
+import RoastLevelInput from "./RoastLevelInput";
 
 const BeanForm = () => {
   const dispatch = useDispatch();
@@ -48,10 +49,7 @@ const BeanForm = () => {
         value={beanData.roastedAt}
         updateBeanData={handleUpdateBeanData}
       />
-      <RoastLevelField
-        value={beanData.roastLevel}
-        updateBeanData={handleUpdateBeanData}
-      />
+      <RoastLevelField selectedValue={beanData.roastLevel} />
       <BeanFlavoursInput selectedFlavours={beanData.flavours} />
 
       <span className="fixed right-0 bottom-2 w-full px-1 sm:static">
@@ -113,21 +111,11 @@ const RoastDateField = ({ value, updateBeanData }) => {
   );
 };
 
-const RoastLevelField = ({ value, updateBeanData }) => {
+const RoastLevelField = ({ selectedValue }) => {
   return (
     <InputWrapper>
       <Label htmlFor="roast-level">Roast level</Label>
-      <select
-        required
-        id="roast-level"
-        className="appearance-none rounded-2xl border-neutral-400 p-2 focus:outline-none"
-        value={value}
-        onChange={(e) => updateBeanData("roastLevel", e.target.value)}
-      >
-        <option value="light">Light</option>
-        <option value="medium">Medium</option>
-        <option value="dark">Dark</option>
-      </select>
+      <RoastLevelInput selectedValue={selectedValue} />
     </InputWrapper>
   );
 };

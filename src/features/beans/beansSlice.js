@@ -36,10 +36,18 @@ const beansSlice = createSlice({
         (f) => f.id !== action.payload.id,
       );
     },
+    selectRoastLevel: (state, action) => {
+      state.beanData.roastLevel = action.payload;
+    },
   },
 });
 
 // export reducers
-export const { addFlavour, deleteFlavour, resetBeanData, updateBeanData } =
-  beansSlice.actions;
+export const {
+  selectRoastLevel,
+  addFlavour,
+  deleteFlavour,
+  resetBeanData,
+  updateBeanData,
+} = beansSlice.actions;
 export default beansSlice.reducer;
