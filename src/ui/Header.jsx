@@ -17,7 +17,7 @@ Header.PageTitle = ({ children }) => {
 
 Header.BackButton = ({ onNavigate }) => {
   return (
-    <IconButton className="sm:hidden" onClick={onNavigate}>
+    <IconButton className="lg:hidden" onClick={onNavigate}>
       <ArrowLeft />
     </IconButton>
   );

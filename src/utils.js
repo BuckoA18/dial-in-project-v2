@@ -1,4 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
+import { FLAVOURS } from "./config";
 
 export const getCurrentDate = () => {
   const dateNow = Temporal.Now.plainDateISO();
@@ -12,4 +13,8 @@ export const getIsDateInFuture = (dateToCompare) => {
   );
   // Returns just tru/false
   return isInFuture === 1;
+};
+
+export const getFlavourCategories = () => {
+  return [...new Set(FLAVOURS.map((flavour) => flavour.category))];
 };

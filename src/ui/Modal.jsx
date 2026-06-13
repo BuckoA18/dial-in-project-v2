@@ -9,7 +9,7 @@ const Modal = ({ onClose, children }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="z-99 flex h-fit w-full max-w-160 flex-col gap-2 rounded-2xl bg-neutral-950 p-2 sm:p-4 lg:max-w-280"
+        className="z-99 flex h-fit w-full max-w-160 flex-col gap-2 rounded-2xl bg-neutral-950 p-2 sm:p-4"
       >
         {children}
       </div>

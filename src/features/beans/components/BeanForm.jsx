@@ -15,6 +15,7 @@ const BeanForm = () => {
   );
 
   const handleSubmit = (e) => {
+    console.log("dsds");
     e.preventDefault();
 
     const dataToSubmit = {
@@ -39,8 +40,8 @@ const BeanForm = () => {
       <RoastLevelField />
       <BeanFlavoursField />
 
-      <span className="fixed right-0 bottom-2 w-full px-1 sm:static">
-        <Button className="">Save</Button>
+      <span className="fixed right-0 bottom-2 w-full px-1 sm:static sm:mt-auto sm:flex sm:justify-end">
+        <Button className="sm:max-w-60">Save</Button>
       </span>
 
       {isPosting && <Loader />}

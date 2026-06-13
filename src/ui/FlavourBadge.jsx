@@ -9,7 +9,7 @@ const FlavourBadge = ({ flavour }) => {
 
   return (
     <label
-      className={`text-md rounded-full border-2 px-2 py-1 font-semibold text-neutral-200 transition-colors focus-within:outline-none has-checked:border-orange-600 focus-within:has-focus-visible:ring-4 focus-within:has-focus-visible:ring-orange-600`}
+      className={`text-md rounded-full border-2 px-2 py-1 font-semibold text-neutral-400 transition-colors focus-within:outline-none has-checked:border-orange-600 has-checked:text-orange-600 focus-within:has-focus-visible:ring-4 focus-within:has-focus-visible:ring-orange-600`}
     >
       <input
         type="checkbox"

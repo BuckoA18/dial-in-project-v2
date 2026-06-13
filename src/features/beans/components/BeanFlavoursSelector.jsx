@@ -1,6 +1,8 @@
 const BeanFlavoursSelector = ({ children }) => {
   return (
-    <fieldset className="flex flex-wrap gap-1 sm:gap-2">{children}</fieldset>
+    <div className="flex max-h-120 flex-col gap-2 overflow-scroll sm:gap-2">
+      {children}
+    </div>
   );
 };
 

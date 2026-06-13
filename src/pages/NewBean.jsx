@@ -11,7 +11,7 @@ const NewBean = () => {
         <Header.BackButton onNavigate={() => navigate(-1)} />
       </Header>
 
-      <main className="h-full p-2">
+      <main className="flex h-full p-2 sm:p-4">
         <BeanForm />
       </main>
     </div>

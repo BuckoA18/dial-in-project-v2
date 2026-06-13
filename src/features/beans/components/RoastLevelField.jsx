@@ -8,7 +8,7 @@ const ROAST_LEVELS = ["Light", "Medium", "Dark"];
 const RoastLevelField = () => {
   return (
     <InputWrapper>
-      <legend>Roast level</legend>
+      <legend className="font-semibold">Roast level</legend>
       <RoastLevelSelector>
         {ROAST_LEVELS.map((level) => {
           return <RoastLevelItem key={level} roastLevel={level} />;
